@@ -1,0 +1,14 @@
+[Unit]
+Description=Savage Schedule Backend Service
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/sav_schedule/backend
+Environment="PATH=/home/ubuntu/sav_schedule/backend/venv/bin"
+ExecStart=/home/ubuntu/sav_schedule/backend/venv/bin/gunicorn --workers 3 --bind 0.0.0.0:5001 app:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target 
