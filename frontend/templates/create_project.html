@@ -492,7 +492,7 @@
             }
 
             searchTimeout = setTimeout(() => {
-                fetch('/search-customers?q=' + encodeURIComponent(query))
+                fetch('/api/search-customers?q=' + encodeURIComponent(query))
                     .then(response => response.json())
                     .then(data => {
                         if (data.length > 0) {

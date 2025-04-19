@@ -121,8 +121,8 @@ class EmailService:
 
                         <div style="margin-top: 30px; text-align: center; color: #666;">
                             <p>If you have any questions or need to make changes, please contact us:</p>
-                            <p style="margin: 5px 0;">Phone: (801) 571-0533</p>
-                            <p style="margin: 5px 0;">Email: savageut@savageut.com</p>
+                            <p style="margin: 5px 0;">Phone: (801) 949-8411</p>
+                            <p style="margin: 5px 0;">Email: joe@savageut.com</p>
                         </div>
 
                         <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; text-align: center; color: #999; font-size: 12px;">

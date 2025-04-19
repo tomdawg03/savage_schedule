@@ -256,12 +256,13 @@ def search_customers():
             print("No search term provided, returning empty list")
             return jsonify([])
         
-        # Search by name, phone, or email
+        # Make search term case insensitive and more flexible
+        search_pattern = f"%{search_term}%"
         customers = Customer.query.filter(
             db.or_(
-                Customer.name.ilike(f'%{search_term}%'),
-                Customer.phone.ilike(f'%{search_term}%'),
-                Customer.email.ilike(f'%{search_term}%')
+                Customer.name.ilike(search_pattern),
+                Customer.phone.ilike(search_pattern),
+                Customer.email.ilike(search_pattern)
             )
         ).limit(10).all()
         
@@ -281,6 +282,7 @@ def search_customers():
         import traceback
         traceback.print_exc()
         return jsonify({"error": str(e)}), 500
+
 
 @app.route('/import-customers-from-csv', methods=['GET'])
 def import_customers_from_csv():

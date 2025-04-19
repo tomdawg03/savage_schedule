@@ -217,7 +217,7 @@
                         </div>
                         <div class="button-group">
                             <a href="/edit-project/{{ region }}/{{ project.id }}" class="edit-button">Edit Project</a>
-                            <button onclick="deleteProject('{{ project.id }}')" class="delete-button">Delete Project</button>
+                            <button onclick="deleteProject('{{ project.id }}', '{{ project.region }}')" class="delete-button">Delete Project</button>
                         </div>
                     </div>
                 {% endfor %}
@@ -231,14 +231,20 @@
     </div>
 
     <script>
-        async function deleteProject(projectId) {
+        async function deleteProject(projectId, region) {
             if (!confirm('Are you sure you want to delete this project? This action cannot be undone.')) {
                 return;
             }
 
             try {
-                const response = await fetch(`http://localhost:5001/api/projects/${projectId}`, {
+                const token = localStorage.getItem('token');
+                const response = await fetch(`/projects/${region}/${projectId}`, {
                     method: 'DELETE',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
                 });
 
                 if (response.ok) {

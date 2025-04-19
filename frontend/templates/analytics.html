@@ -374,7 +374,7 @@
                 // Clean the timeFrame value to remove any suffixes
                 const cleanTimeFrame = timeFrame.split(':')[0];
                 console.log('Making request to backend analytics endpoint...');
-                const url = `http://127.0.0.1:5001/analytics/data?timeFrame=${cleanTimeFrame}`;
+                const url = `/api/analytics/data?timeFrame=${cleanTimeFrame}`;
                 console.log('Requesting URL:', url);
                 
                 const response = await fetch(url, {

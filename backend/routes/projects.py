@@ -413,9 +413,9 @@ def update_project(current_user, region, project_id):
         print(f"Unexpected error updating project: {str(e)}")
         return jsonify({"error": str(e)}), 500
 
-@projects_bp.route('/<project_id>', methods=['DELETE'])
-@token_required
-def delete_project(current_user, project_id):
+@projects_bp.route('/<region>/<project_id>', methods=['DELETE'])
+@login_required
+def delete_project(current_user, region, project_id):
     try:
         project = Project.query.get(project_id)
         if not project:
